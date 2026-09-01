@@ -151,7 +151,7 @@ export default function Dashboard() {
                   tick={{ fontSize: 11 }}
                 />
                 <YAxis tick={{ fontSize: 11 }} width={50} />
-                <Tooltip formatter={(value: number) => [`€${money(value)}`, "Ciro"]} />
+                <Tooltip formatter={(value) => [`€${money(Number(value)}`, "Ciro"]} />
                 <Area
                   type="monotone"
                   dataKey="revenue"
