@@ -64,7 +64,7 @@ export default function Dashboard() {
     <main className="mx-auto max-w-5xl px-5 py-10">
       {/* Başlık */}
       <header className="ruled border-b-2 border-ink pb-6">
-        <p className="figure text-[11px] uppercase tracking-[0.22em] text-ledger">
+        <p className="flex flex-wrap items-start justify-between gap-4">
           Mahalle Marketi · Amsterdam
         </p>
         <h1 className="mt-1 font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-tight">
