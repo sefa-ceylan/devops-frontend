@@ -17,3 +17,10 @@ npm run dev
 
 ## Environment Variables
 `.env.local` dosyasında:
+
+## Deployment
+
+- Live: https://sefa-frontend.team-vit-devops.nl
+- Deployed automatically via GitHub Actions on every push to `main`
+- Static export served directly by Nginx, with Let's Encrypt SSL
+- Connects to backend API at https://sefa-backend.team-vit-devops.nl
