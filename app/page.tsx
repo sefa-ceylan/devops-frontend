@@ -68,7 +68,7 @@ export default function Dashboard() {
           Mahalle Marketi · Amsterdam
         </p>
         <h1 className="mt-1 font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-tight">
-          Satış Defteri A
+          Satış Defteri 
         </h1>
       </header>
 
