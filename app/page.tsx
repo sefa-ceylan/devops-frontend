@@ -24,6 +24,19 @@ const money = (n: number) =>
   n.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 export default function Dashboard() {
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    setDark(document.documentElement.classList.contains("dark"));
+  }, []);
+
+  const toggleTheme = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+  };
+
   const [rangeDays, setRangeDays] = useState(30);
   const [summary, setSummary] = useState<Summary | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -64,12 +77,23 @@ export default function Dashboard() {
     <main className="mx-auto max-w-5xl px-5 py-10">
       {/* Başlık */}
       <header className="ruled border-b-2 border-ink pb-6">
-        <p className="figure text-[11px] uppercase tracking-[0.22em] text-ledger">
-          Mahalle Marketi · Amsterdam
-        </p>
-        <h1 className="mt-1 font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-tight">
-          Satış Defteri
-        </h1>
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="figure text-[11px] uppercase tracking-[0.22em] text-ledger">
+              Mahalle Marketi · Amsterdam
+            </p>
+            <h1 className="mt-1 font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-tight">
+              Satış Defteri
+            </h1>
+          </div>
+          <button
+            onClick={toggleTheme}
+            aria-label="Temayı değiştir"
+            className="figure shrink-0 border border-rule px-3 py-1.5 text-xs text-ink-soft transition-colors hover:border-ink hover:text-ink"
+          >
+            {dark ? "☀️ Aydınlık" : "🌙 Karanlık"}
+          </button>
+        </div>
       </header>
 
       {/* Dönem seçici */}
@@ -151,7 +175,7 @@ export default function Dashboard() {
                   tick={{ fontSize: 11 }}
                 />
                 <YAxis tick={{ fontSize: 11 }} width={50} />
-                <Tooltip formatter={(value: number) => [`€${money(value)}`, "Ciro"]} />
+                <Tooltip formatter={(value) => [`€${money(Number(value))}`, "Ciro"]} />
                 <Area
                   type="monotone"
                   dataKey="revenue"

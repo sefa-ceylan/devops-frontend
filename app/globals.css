@@ -14,11 +14,23 @@
   --font-data: var(--font-plex-mono), ui-monospace, monospace;
 }
 
+.dark {
+  color-scheme: dark;
+  --color-paper: #191c15;
+  --color-bar: #20241a;
+  --color-ink: #efece4;
+  --color-ink-soft: #9aa08d;
+  --color-rule: #343a2c;
+  --color-ledger: #6fae7c;
+  --color-stamp: #e2564a;
+}
+
 body {
   background-color: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .figure {
